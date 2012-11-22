@@ -1,0 +1,19 @@
+<div id="Sample" data_video=@book.title></div>
+<h1>Requested Video</h1>
+<p>
+  <b>Title:</b>
+  <%= @book.title %>
+</p>
+
+<p>
+  <b>Publisher:</b>
+  <%= @book.publisher %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @book.price %>
+</p>
+
+<video id="trailer" src="<%=@book.title + ".mp4"%>" controls poster="<%=@book.image_url%>" width="854" height="480">
+</video>
