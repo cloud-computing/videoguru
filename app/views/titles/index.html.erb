@@ -1,0 +1,26 @@
+<h1>Project</h1>
+
+<div id="title-list">
+<table>
+    <th>Image_URL</th>
+		<th>Title</th>
+    <th>Director</th>
+    <th>Rating</th>
+		<th>Video_URL</th>
+  </tr>  
+  <% for title in @titles %>
+		<td><%= title.image_url %>
+	  <td><%= title.movie_name %>
+	  <td><%= title.director %>
+	  <td><%= title.rating %>
+	  <td><%= title.video_url %>
+	  <td><%= link_to 'Show', title %></td>
+		<td><%= link_to 'Edit', edit_title_path(title) %></td>
+		<td><%= link_to 'Destroy', title, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to 'New Title', new_title_path %>
+</div>

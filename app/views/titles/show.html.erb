@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @title.movie_name %>
+</p>
+
+<p>
+  <b>Director:</b>
+  <%= @title.director %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @title.rating %>
+</p>
+
+<p>
+  <b>Video:</b>
+	<video id="trailer"  controls poster="https://s3.amazonaws.com/videoguru/images/<%= @title.image_url %>" width="634" height="428">
+    <source src="https://s3.amazonaws.com/videoguru/videos/<%= @title.video_url %>">
+  </video>
+</p>
+
+<%= link_to 'Edit', edit_title_path(@title) %> |
+<%= link_to 'Back', titles_path %>

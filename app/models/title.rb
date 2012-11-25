@@ -1,6 +1,5 @@
 class Title < ActiveRecord::Base
 	has_and_belongs_to_many :users
-	# attr_accessible :inventory, :movie_name, :publisher, :price, :image_url
 	attr_accessible :movie_name, :director, :image_url, :video_url, :rating
 
   validates_uniqueness_of :id

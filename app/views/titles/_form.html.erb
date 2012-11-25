@@ -1,0 +1,38 @@
+<%= form_for(@title) do |f| %>
+  <% if @title.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@title.errors.count, "error") %> prohibited this title from being saved:</h2>
+
+      <ul>
+      <% @title.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :movie_name %><br />
+    <%= f.text_field :movie_name, :placeholder => 'Enter title here' %>
+  </div>
+  <div class="field">
+    <%= f.label :director %><br />
+    <%= f.text_field :director, :placeholder => 'Director name' %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br />
+    <%= f.text_field :rating, :placeholder => 'Enter a number between 1 and 5' %>
+  </div>
+  <div class="field">
+    <%= f.label :image_url %><br />
+	  <%= f.text_field :image_url, :placeholder => 'Enter image location' %>
+  </div>
+	<div class="field">
+    <%= f.label :video_url %><br />
+	  <%= f.text_field :video_url, :placeholder => 'Enter video location' %>
+  </div>
+  <br>
+  
+  <%= submit_tag("Create") %>
+
+<% end %>

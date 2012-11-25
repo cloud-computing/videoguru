@@ -5,20 +5,20 @@ class AddTestData < ActiveRecord::Migration
 				
 		ironman = Title.create(:movie_name => "Iron Man 3 Trailer",
 													:director => "Shane Black",
-													:image_url => "Iron Man 3 Trailer.jpg",
-													:video_url => "Iron Man 3 Trailer.webm",
+													:image_url => "64.jpg",
+													:video_url => "64_480p.webm",
 													:rating => 5)
 		
-		wwz = Title.create(:movie_name => "World War Z Trailer",
-											:director => "Some guy",
-											:image_url => "World War Z Trailer.jpg",
-											:video_url => "World War Z Trailer.webm",
+		wwz = Title.create(:movie_name => "Cloud Atlas Trailer",
+											:director => "Wachowskis",
+											:image_url => "67.jpg",
+											:video_url => "67_480p.webm",
 											:rating => 5)
 		
 		skyfall = Title.create(:movie_name => "Skyfall Trailer",
 													:director => "Sam Mendez",
-													:image_url => "Skyfall Trailer.jpg",
-													:video_url => "Skyfall Trailer.webm",
+													:image_url => "66.jpg",
+													:video_url => "66_480p.webm",
 													:rating => 5)
 		
 		user1 = User.create(:name => "admin",

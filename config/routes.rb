@@ -1,29 +1,19 @@
 Bookstore::Application.routes.draw do
   
   get "sessions/new"
-
   get "users/new"
   
-  resources :books
-  resources :authors
+  resources :titles
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :orders
   
-  match '/books_search',  :to => 'shop#books_search'
-  match '/authors_search', :to => 'shop#authors_search'
+  match '/titles_search',  :to => 'shop#titles_search'
   
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-  
-  match '/checkout', :to => 'orders#checkout'
-  match '/done', :to => 'orders#done'
 
   match '/signup',  :to => 'users#new'
-  match '/add_to_cart', :to => 'shop#add_to_cart'
-  match '/clear_cart', :to => 'shop#clear_cart'
-  match '/view_cart', :to => 'shop#view_cart'
   
 	match '/watch_video', :to => 'shop#watch_video'
   match '/home_index', :to => 'shop#index'
