@@ -21,7 +21,9 @@ class TitlesController < ApplicationController
   # GET /titles/1
   # GET /titles/1.xml
   def show
-    @title = Title.find(params[:id])
+    puts "**************************"
+		puts params[:id]
+		@title = Title.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @title }
@@ -40,7 +42,7 @@ class TitlesController < ApplicationController
 
   # GET /titles/1/edit
   def edit
-    @title = Title.find(params[:id])
+		@title = Title.find(params[:id])
   end
 
   # POST /titles

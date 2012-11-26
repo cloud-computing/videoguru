@@ -7,13 +7,12 @@ class UsersController < ApplicationController
   
   def index
     @title = "All users"
-	@users = User.all
+	  @users = User.all
   end
   
   def show
     @user = User.find(params[:id])
-	@title = @user.name
-	
+	  @title = @user.name
 	respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @book }
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @title = "Sign up"
-	respond_to do |format|
+	  respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @book }
     end
@@ -33,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
 	  sign_in @user
-	  flash[:success] = "Welcome to the Sample App!"
+	  flash[:success] = "Welcome to VideoGuru!"
       redirect_to @user
     else
       @title = "Sign up"
@@ -65,9 +64,9 @@ class UsersController < ApplicationController
   
   private
 
-    def authenticate
-      deny_access unless signed_in?
-    end
+	def authenticate
+		deny_access unless signed_in?
+	end
 	
 	def correct_user
       @user = User.find(params[:id])
@@ -76,5 +75,6 @@ class UsersController < ApplicationController
 	
 	def admin_user
       redirect_to(root_path) unless get_current_user.admin?
-    end
+  end
+
 end

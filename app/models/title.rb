@@ -33,7 +33,7 @@ class Title < ActiveRecord::Base
   def self.search(query)
     movie_name = query.to_s.gsub(/%/,"\%")
 		movies_arr = []
-		movies_arr << Title.find_by_title(movie_name) unless Title.find_by_title(movie_name) == nil
+		movies_arr << Title.find_by_movie_name(movie_name) unless Title.find_by_movie_name(movie_name) == nil
 		movie_name.split(' ').each do |i|
 			movies1 = Title.find(:all, :conditions => ["movie_name like ?", "%#{i}%"])
 			movies1.each do |title|

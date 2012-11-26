@@ -8,6 +8,7 @@ Bookstore::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   
   match '/titles_search',  :to => 'shop#titles_search'
+	match '/movie_show', :to => 'titles#show'
   
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'

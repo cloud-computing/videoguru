@@ -1,45 +1,30 @@
-<h1>Catalog</h1>
-  <% form_tag books_search_path, :method => 'get' do %>
+<h1>Hypnotoad Commands You To Watch</h1>
+  <% form_tag titles_search_path, :method => 'get' do %>
   <p>
     <%= text_field_tag (:query) %>
     <%= submit_tag "Search by Title" %>
   </p>
   <% end %>
-  
-  <% form_tag authors_search_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag (:query) %>
-    <%= submit_tag "Search by Actor" %>
-  </p>
-  <% end %>
 
-<div id="book-list">
+<div id="title-list">
 <table>
     <th>Image</th>
-    <th>Title</th>
-    <th>Publisher</th>
-    <th>Price</th>
+		<th>Title</th>
+    <th>Director</th>
+    <th>Rating</th>
   </tr>  
-  <%= will_paginate @books, :param_name => 'books_page' %>
-  <% for book in @books %>
+  <%= will_paginate @titles, :param_name => 'titles_page' %>
+  <% for title in @titles %>
       <td>
-		  <img class="list-image" src="<%= book.image_url %>" width="100" />
+		  <img class="list-image" src="https://s3.amazonaws.com/videoguru/images/<%= title.image_url %>" width="100" />
   	  </td>
 	  <td>
-	    <span class="list-title"><%= link_to h(book.title), :action => "watch_video", :id => book %></span><br />
-		<% for author in book.authors %>
-		  <%= h(author.first_name) %>
-		  <%= h(author.last_name) %>
-		  <br>
-		<% end %>
+	    <%= link_to title.movie_name, movie_show_path(:id => title) %>
 	  </td>
-	  <td><%= book.publisher %>
-	  <td><%= book.price %>
-	  <td><%= button_to "Add to Cart", :action => :add_to_cart, :id => book %>
+	  <td><%= title.director %>
+	  <td><%= title.rating %>
     </tr>
   <% end %>
 </table>
-<br>
-<br>
-<%= link_to "View Cart", :action => "view_cart" %>
+
 </div>
