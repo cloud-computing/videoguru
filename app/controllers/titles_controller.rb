@@ -126,8 +126,8 @@ class TitlesController < ApplicationController
 
   def destroy
 	@title = Title.find(params[:id])
-	AWS::S3::S3Object.find(@title.image_url, @@BUCKET).delete
-	AWS::S3::S3Object.find(@title.video_url, @@BUCKET).delete
+	AWS::S3::S3Object.find(@title.image_url.gsub("http://s3.amazonaws.com/videoguru/",""), @@BUCKET).delete
+	AWS::S3::S3Object.find(@title.video_url.gsub("http://s3.amazonaws.com/videoguru/",""), @@BUCKET).delete
     @title.destroy
 
 

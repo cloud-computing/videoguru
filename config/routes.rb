@@ -18,6 +18,7 @@ Bookstore::Application.routes.draw do
   
 	match '/watch_video', :to => 'shop#watch_video'
   match '/home_index', :to => 'shop#index'
+	# match '/title_upload_path', :to => 'titles#new'
   
   root :to => "shop#index"
   
