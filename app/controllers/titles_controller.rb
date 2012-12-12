@@ -1,4 +1,5 @@
 class TitlesController < ApplicationController
+  @@BUCKET = "videoguru"
   # before_filter :run_before, :except => [:index, :show, :new, :edit, :destroy, :add_to_cart, :get_cart, :clear_cart, :view_cart]
   before_filter :run_before, :except => [:index, :show, :new, :edit, :destroy]
   
@@ -49,6 +50,21 @@ class TitlesController < ApplicationController
   # POST /titles.xml
   def create
     @title = Title.new(params[:title])
+    
+  	fileUp = params[:upload]
+    orig_filename =  fileUp['image_file'].original_filename
+    filename = sanitize_filename(orig_filename)
+    AWS::S3::S3Object.store(filename, fileUp['image_file'].read, @@BUCKET, :access => :public_read)
+    imageurl = AWS::S3::S3Object.url_for(filename, @@BUCKET, :authenticated => false)
+	@title.image_url = imageurl
+    
+    orig_filename =  fileUp['video_file'].original_filename
+    filename = sanitize_filename(orig_filename)
+    AWS::S3::S3Object.store(filename, fileUp['video_file'].read, @@BUCKET, :access => :public_read)
+    videourl = AWS::S3::S3Object.url_for(filename, @@BUCKET, :authenticated => false)
+
+    @title.video_url = videourl
+
 	  # create_author(params[:q],params[:r])
 	  # if @author != nil
 		respond_to do |format|
@@ -109,12 +125,22 @@ class TitlesController < ApplicationController
   end
 
   def destroy
-	  @title = Title.find(params[:id])
+	@title = Title.find(params[:id])
+	AWS::S3::S3Object.find(@title.image_url, @@BUCKET).delete
+	AWS::S3::S3Object.find(@title.video_url, @@BUCKET).delete
     @title.destroy
+
+
     respond_to do |format|
       format.html { redirect_to(titles_url) }
       format.xml  { head :ok }
     end
   end
+  
+  private 
+      def sanitize_filename(file_name)
+        just_filename = File.basename(file_name)
+        just_filename.sub(/[^\w\.\-]/,'_')
+      end
   
 end

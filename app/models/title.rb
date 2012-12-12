@@ -7,12 +7,12 @@ class Title < ActiveRecord::Base
   validates_presence_of :movie_name, :director, :image_url, :video_url
   validates_numericality_of :rating
   # validates_numericality_of :inventory, :only_integer => true
-  validates_format_of :image_url,
-    :with		=> %r{\.(gif|jpg|png)$}i,
-    :message	=> "must be a URL for a GIF, JPG, or PNG image"
-	validates_format_of :video_url,
-    :with		=> %r{\.(webm)$}i,
-    :message	=> "must be a URL for a WEBM video"
+ #  validates_format_of :image_url,
+ #    :with		=> %r{\.(gif|jpg|png)$}i,
+ #    :message	=> "must be a URL for a GIF, JPG, or PNG image"
+	# validates_format_of :video_url,
+ #    :with		=> %r{\.(webm)$}i,
+ #    :message	=> "must be a URL for a WEBM video"
   
   # def decr_inventory(quantity)
     # self.inventory = self.inventory - quantity

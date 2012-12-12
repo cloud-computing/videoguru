@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
 gem 'rails_code_qa'
-
+gem 'aws-s3', '0.6.2', :require => 'aws/s3'
 # Use unicorn as the web server
 # gem 'unicorn'
 

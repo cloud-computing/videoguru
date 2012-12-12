@@ -35,7 +35,10 @@ module Bookstore
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-
+    AWS::S3::Base.establish_connection!(
+      :access_key_id     => 'AKIAILSDTLJUU6UM26OA',
+      :secret_access_key => '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'
+    )
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
   end

@@ -1,4 +1,4 @@
-<%= form_for(@title) do |f| %>
+<%= form_for @title, :html => {:multipart => true, :accept => "image/gif,image/png,image/jpg"} do |f| %>
   <% if @title.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@title.errors.count, "error") %> prohibited this title from being saved:</h2>
@@ -25,11 +25,14 @@
   </div>
   <div class="field">
     <%= f.label :image_url %><br />
-	  <%= f.text_field :image_url, :placeholder => 'Enter image location' %>
+	<%= file_field 'upload', 'image_file'  %>
+    
   </div>
+
 	<div class="field">
     <%= f.label :video_url %><br />
-	  <%= f.text_field :video_url, :placeholder => 'Enter video location' %>
+	  <%= file_field 'upload', 'video_file'  %>
+
   </div>
   <br>
   
